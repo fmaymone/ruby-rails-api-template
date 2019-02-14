@@ -35,7 +35,7 @@ module V1
   
     def trip_params
       # whitelist params
-      params.permit(:destination)
+      params.permit(:destination, :start_date, :end_date, :comment, :trip, :id)
     end
   
     def set_trip
