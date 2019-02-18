@@ -16,21 +16,38 @@ module V1
   
     # GET /Trips/:id
     def show
+      if @trip.user.id != current_user.id and current_user.role != 'admin'
+        raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
+      end
       json_response(@trip)
     end
   
     # PUT /Trips/:id
     def update
+      if @trip.user.id != current_user.id and current_user.role != 'admin'
+        raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
+      end
       @trip.update(trip_params)
       head :no_content
     end
   
     # DELETE /Trips/:id
     def destroy
+      if @trip.user.id != current_user.id and current_user.role != 'admin'
+        raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
+      end
       @trip.destroy
       head :no_content
     end
-  
+    
+    def get_all_trips
+      if current_user.role == 'admin'  
+        json_response(Trip.all)
+      else
+        raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
+      end
+    end
+    
     private
   
     def trip_params
