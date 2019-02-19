@@ -1,11 +1,12 @@
 module V1
   class TripsController < ApplicationController
+      require './lib/generate_pdf'
       before_action :set_trip, only: [:show, :update, :destroy]
   
     # GET /Trips
     def index
       # @trips = current_user.trips.paginate(page: params[:page], per_page: 20)
-      @trips = current_user.trips
+      @trips = current_user.trips.order(:start_date)
       json_response(@trips)
     end
   
@@ -47,6 +48,14 @@ module V1
       else
         raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
       end
+    end
+    
+    def print_monthly_trips
+    
+     @month = params[:month].to_i
+     @trips_to_print = current_user.trips_for_month(params[:month])
+     url = GeneratePdf::generate_trips_reports(current_user, @trips_to_print, Date::MONTHNAMES[@month])
+     json_response(url: url)
     end
     
     private

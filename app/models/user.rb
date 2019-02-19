@@ -17,4 +17,8 @@ class User < ApplicationRecord
     end
   end
   
+  def trips_for_month(month)
+    @trips = self.trips.where(:start_date => DateTime.now..DateTime.now + 30).order(:start_date)
+  end
+  
 end
