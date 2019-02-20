@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20190214122335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assignments", force: :cascade do |t|
-    t.integer  "role_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["role_id"], name: "index_assignments_on_role_id", using: :btree
-    t.index ["user_id"], name: "index_assignments_on_user_id", using: :btree
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.uuid     "entity_id"
