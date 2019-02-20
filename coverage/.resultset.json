@@ -88,8 +88,8 @@
         null,
         null,
         1,
-        20,
-        20,
+        22,
+        22,
         null,
         null,
         null,
@@ -291,6 +291,16 @@
         null,
         null,
         null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/spec/factories/trips.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -631,16 +641,32 @@
         null,
         null
       ],
+      "/home/ubuntu/workspace/spec/models/trip_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        null
+      ],
+      "/home/ubuntu/workspace/app/models/trip.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
       "/home/ubuntu/workspace/spec/models/user_spec.rb": [
         1,
         null,
         null,
         1,
         null,
-        null,
         2,
-        null,
-        null,
         2,
         2,
         2,
@@ -670,11 +696,6 @@
         0,
         null,
         null,
-        null
-      ],
-      "/home/ubuntu/workspace/app/models/application_record.rb": [
-        1,
-        1,
         null
       ],
       "/home/ubuntu/workspace/spec/requests/authentication_spec.rb": [
@@ -826,12 +847,6 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/models/trip.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
       "/home/ubuntu/workspace/app/controllers/authentication_controller.rb": [
         1,
         1,
@@ -877,6 +892,6 @@
         null
       ]
     },
-    "timestamp": 1550621122
+    "timestamp": 1550626731
   }
 }

@@ -37,7 +37,7 @@ module V1
         @user.id != current_user.id
         raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
       end
-      @user.update(user_params)
+      @user.update_attribute(:name, user_params[:name])
       head :no_content
     end
   
@@ -67,7 +67,7 @@ module V1
   
     def user_params
       # whitelist params
-      params.permit(:name, :email, :id)
+      params.permit(:name, :id, :user)
     end
   
     def set_user
