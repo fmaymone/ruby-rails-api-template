@@ -55,7 +55,7 @@ module V1
       if current_user.role != 'admin'
         raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
       end
-      @user.update(update_role_params)
+      @user.update_attribute(:role, update_role_params[:role])
       head :no_content
     end
   
