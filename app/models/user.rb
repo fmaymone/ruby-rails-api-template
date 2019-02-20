@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # encrypt password
   has_secure_password
+  
+  before_destroy :destroy_trips
+
 
   # Model associations
   has_many :trips
@@ -18,7 +21,13 @@ class User < ApplicationRecord
   end
   
   def trips_for_month(month)
-    @trips = self.trips.where(:start_date => DateTime.now..DateTime.now + 30).order(:start_date)
+    @trips = self.trips.where('extract(month from start_date) = ?', month).order(:start_date)
   end
+  
+  private
+
+   def destroy_trips
+     self.trips.destroy_all   
+   end
   
 end
