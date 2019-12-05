@@ -43,7 +43,7 @@ module V1
   
     # DELETE /Users/:id
     def destroy
-      if current_user.role != 'admin' and current_user.role != 'manager'
+      if (current_user.role != 'admin' and current_user.role != 'manager' and current_user != @user)
         raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
       end
       @user.destroy

@@ -5,7 +5,7 @@ class AuthenticationController < ApplicationController
     auth_token =
       AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
     user = User.where(email: auth_params[:email]).first
-    json_response(auth_token: auth_token, role: user.role, email: user.email)
+    json_response(auth_token: auth_token, role: user.role, email: user.email, id: user.id)
   end
 
   private
